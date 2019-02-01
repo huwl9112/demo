@@ -47,14 +47,14 @@ public class UserController {
     @GetMapping("getDataList")
     @DataSourceAnontation(dataSource=SysConstant.MASTER)
     @ApiOperation(value="分页获取用户列表")
-    public ReturnResult getDataList(@RequestParam(name = "pageNumber", defaultValue = "1") int pageNumer, @RequestParam(name = "pageSize", defaultValue = "4") int pageSize, HttpServletRequest request) {
+    public ReturnResult getDataList(@RequestParam(name = "pageNumber", defaultValue = "1") int pageNumer, @RequestParam(name = "pageSize", defaultValue = "1") int pageSize, HttpServletRequest request) {
         Map<String, Object> params = GetRequestParamsUtil.getRequestParams(request);
         Page<User> userPage = new Page<User>(pageNumer, pageSize);
-        Page<User> userPage1=userService.selectPage(userPage,new EntityWrapper<User>());
+        //Page<User> userPage1=userService.selectPage(userPage,new EntityWrapper<User>());
         List<User> list= userService.selectUserPage(userPage, params);
         ReturnResult result = new ReturnResult();
         result.setCode("success");
-        result.setData(userPage.getRecords());
+        result.setData(list);
         result.setPages(userPage.getPages());
         result.setTotal(userPage.getTotal());
         result.setMsg("获取成功");
@@ -121,6 +121,11 @@ public class UserController {
                 //logger.error("fail to get the ServletOutputStream");
             }
         }
+    }
+
+    @RequestMapping("/index")
+    public String index() {
+        return "Hello Docker!";
     }
 }
 

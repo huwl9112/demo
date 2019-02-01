@@ -1,3 +1,4 @@
+/*
 package com.hu.demo;
 
 import com.alibaba.fastjson.JSON;
@@ -30,3 +31,4 @@ public class DemoApplicationTests {
     public void contextLoads() {
         //System.out.println(JSON.toJSONString(operationLogService.selectList(null)));
     }}
+*/
