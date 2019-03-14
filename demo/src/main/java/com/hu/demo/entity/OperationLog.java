@@ -1,62 +1,62 @@
 package com.hu.demo.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.baomidou.mybatisplus.activerecord.Model;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.annotations.TableId;
-import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.baomidou.mybatisplus.annotations.TableId;
+
+import java.time.LocalDateTime;
+
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.activerecord.Model;
+import com.baomidou.mybatisplus.annotations.TableName;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author allnas
- * @since 2018-07-27
+ * @since 2019-02-27
  */
 @TableName("operation_log")
 public class OperationLog extends Model<OperationLog> {
 
     private static final long serialVersionUID = 1L;
-    @TableId(value="id", type= IdType.AUTO)
+
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     /**
      * 系统模块
      */
     @TableField("oper_moudel")
-    private String operMoudel;
+    private String moudel;
     /**
      * 操作类型1-新增2-编辑3-删除
      */
-    @TableField("oper_type")
-    private String  operType;
+    @TableField("type")
+    private String type;
     /**
      * 操作的表
      */
-    @TableField("oper_table")
-    private String operTable;
+    @TableField("table")
+    private String table;
     /**
      * 操作内容
      */
-    @TableField("oper_content")
-    private String operContent;
+    @TableField("content")
+    private String content;
     /**
      * 操作时间
      */
-    @TableField("oper_time")
-    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    private LocalDateTime operTime;
+    @TableField("time")
+    private LocalDateTime time;
     /**
      * 操作人
      */
-    @TableField("oper_id")
+    @TableField("operId")
     private Integer operId;
+    private Integer status;
 
 
     public Integer getId() {
@@ -67,45 +67,6 @@ public class OperationLog extends Model<OperationLog> {
         this.id = id;
     }
 
-    public String getOperMoudel() {
-        return operMoudel;
-    }
-
-    public void setOperMoudel(String operMoudel) {
-        this.operMoudel = operMoudel;
-    }
-
-    public String getOperType() {
-        return operType;
-    }
-
-    public void setOperType(String operType) {
-        this.operType = operType;
-    }
-
-    public String getOperTable() {
-        return operTable;
-    }
-
-    public void setOperTable(String operTable) {
-        this.operTable = operTable;
-    }
-
-    public String getOperContent() {
-        return operContent;
-    }
-
-    public void setOperContent(String operContent) {
-        this.operContent = operContent;
-    }
-
-    public LocalDateTime getOperTime() {
-        return operTime;
-    }
-
-    public void setOperTime(LocalDateTime operTime) {
-        this.operTime = operTime;
-    }
 
     public Integer getOperId() {
         return operId;
@@ -115,21 +76,56 @@ public class OperationLog extends Model<OperationLog> {
         this.operId = operId;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     @Override
     protected Serializable pkVal() {
         return this.id;
     }
 
-    @Override
-    public String toString() {
-        return "OperationLog{" +
-        ", id=" + id +
-        ", operMoudel=" + operMoudel +
-        ", operType=" + operType +
-        ", operTable=" + operTable +
-        ", operContent=" + operContent +
-        ", operTime=" + operTime +
-        ", operId=" + operId +
-        "}";
+    public String getMoudel() {
+        return moudel;
+    }
+
+    public void setMoudel(String moudel) {
+        this.moudel = moudel;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getTable() {
+        return table;
+    }
+
+    public void setTable(String table) {
+        this.table = table;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public LocalDateTime getTime() {
+        return time;
+    }
+
+    public void setTime(LocalDateTime time) {
+        this.time = time;
     }
 }

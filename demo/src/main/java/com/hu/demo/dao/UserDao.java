@@ -17,7 +17,5 @@ import java.util.Map;
  * @author allnas
  * @since 2018-07-23
  */
-public interface UserDao extends BaseMapper<User> {
-
-    List<User> selectUserPage(Page<User> userPage, Map<String,Object> params);
+public interface UserDao extends BaseMapper<User>,CommonDao<User> {
 }

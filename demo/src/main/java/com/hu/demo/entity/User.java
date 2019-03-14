@@ -2,6 +2,8 @@ package com.hu.demo.entity;
 
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotations.TableField;
+import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.activerecord.Model;
@@ -17,7 +19,7 @@ import java.io.Serializable;
  * @author allnas
  * @since 2018-07-23
  */
-@Data
+@TableName("user")
 public class User extends Model<User> {
 
     private static final long serialVersionUID = 1L;
@@ -50,7 +52,8 @@ public class User extends Model<User> {
     /**
      * 地址
      */
-	private String addr;
+    @TableField("user_addr")
+	private String userAddr;
     /**
      * 用户状态，0代表未激活，1代表已经激活
      */
@@ -122,12 +125,12 @@ public class User extends Model<User> {
 		this.phone = phone;
 	}
 
-	public String getAddr() {
-		return addr;
+	public String getUserAddr() {
+		return userAddr;
 	}
 
-	public void setAddr(String addr) {
-		this.addr = addr;
+	public void setUserAddr(String userAddr) {
+		this.userAddr = userAddr;
 	}
 
 	public Integer getStatus() {
@@ -160,7 +163,7 @@ public class User extends Model<User> {
 			", email=" + email +
 			", sex=" + sex +
 			", phone=" + phone +
-			", addr=" + addr +
+			", addr=" + userAddr +
 			", status=" + status +
 			", code=" + code +
 			"}";

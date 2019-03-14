@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * </p>
  *
  * @author allnas
- * @since 2018-07-27
+ * @since 2019-02-27
  */
-public interface OperationLogDao extends BaseMapper<OperationLog> {
+public interface OperationLogDao extends BaseMapper<OperationLog>,CommonDao<OperationLog> {
 
 }

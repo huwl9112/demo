@@ -33,16 +33,16 @@ public class LogAspect {
         logger.debug("正在执行的方法名称:" + jp.getSignature().getName());
         Object retValue = null;
         OperationLog log=new OperationLog();
-        log.setOperTime(LocalDateTime.now());
+        log.setTime(LocalDateTime.now());
         String className=jp.getTarget().getClass().getName();//获取类名
         String methodName=jp.getSignature().getName();//获取方法名
         Object[] args=jp.getArgs();//获取参数
         Object object=rvt;//返回值
         Class<?> clazz=object.getClass();
-        log.setOperContent(SqlContextHolder.getSql());
-        log.setOperMoudel(logAnontation.model());
-        log.setOperTable(clazz.getSimpleName());
-        log.setOperType(logAnontation.operType());
+        log.setContent(SqlContextHolder.getSql());
+        log.setMoudel(logAnontation.model());
+        log.setTable(clazz.getSimpleName());
+        log.setType(logAnontation.operType());
         //log.setOperId(ShiroUtil.getCurrentUser().getUid());
         SqlContextHolder.clearSql();//用完释放，防止内存泄漏
         logService.insert(log);

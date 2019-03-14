@@ -157,7 +157,7 @@ public class ShiroConfig {
      *
      * @return
      */
-    @Bean
+    @Bean("shiroEhcacheManager")
     @DependsOn("lifecycleBeanPostProcessor")
     public CacheManager cacheManager() {
         EhCacheManager cacheManager = new EhCacheManager();

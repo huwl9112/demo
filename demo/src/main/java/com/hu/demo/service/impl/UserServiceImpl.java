@@ -19,13 +19,13 @@ import java.util.Map;
  * @author allnas
  * @since 2018-07-23
  */
-@Service
+@Service(value = "userService")
 public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserService {
     @Autowired
     private UserDao userDao;
 
     @Override
-    public List<User> selectUserPage(Page<User> userPage, Map<String, Object> params) {
-        return userDao.selectUserPage(userPage,params);
+    public List<User> selectByPage(Page<User> page, Map<String, Object> params) {
+        return userDao.selectByPage(page,params);
     }
 }

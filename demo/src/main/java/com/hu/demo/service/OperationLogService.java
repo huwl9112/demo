@@ -2,6 +2,7 @@ package com.hu.demo.service;
 
 import com.hu.demo.entity.OperationLog;
 import com.baomidou.mybatisplus.service.IService;
+import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -9,8 +10,9 @@ import com.baomidou.mybatisplus.service.IService;
  * </p>
  *
  * @author allnas
- * @since 2018-07-27
+ * @since 2019-02-27
  */
-public interface OperationLogService extends IService<OperationLog> {
+@Service
+public interface OperationLogService extends IService<OperationLog>,CommonService<OperationLog> {
 
 }

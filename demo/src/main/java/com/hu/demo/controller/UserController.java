@@ -49,14 +49,14 @@ public class UserController {
     @ApiOperation(value="分页获取用户列表")
     public ReturnResult getDataList(@RequestParam(name = "pageNumber", defaultValue = "1") int pageNumer, @RequestParam(name = "pageSize", defaultValue = "1") int pageSize, HttpServletRequest request) {
         Map<String, Object> params = GetRequestParamsUtil.getRequestParams(request);
-        Page<User> userPage = new Page<User>(pageNumer, pageSize);
-        //Page<User> userPage1=userService.selectPage(userPage,new EntityWrapper<User>());
-        List<User> list= userService.selectUserPage(userPage, params);
+        Page<User> page = new Page<User>(pageNumer, pageSize);
+        //Page<User> page1=userService.selectByPage(page,new EntityWrapper<User>());
+        List<User> list= userService.selectByPage(page, params);
         ReturnResult result = new ReturnResult();
         result.setCode("success");
         result.setData(list);
-        result.setPages(userPage.getPages());
-        result.setTotal(userPage.getTotal());
+        result.setPages(page.getPages());
+        result.setTotal(page.getTotal());
         result.setMsg("获取成功");
         return result;
     }
@@ -66,7 +66,7 @@ public class UserController {
     @LogAnontation(model="用户管理",operType = "新增",operTable = "User")
     public User add(@RequestParam @DateTimeFormat(iso=DateTimeFormat.ISO.DATE) Date day){
         User user=new User();
-        user.setAddr("nanjing city");
+        user.setUserAddr("nanjing city");
         user.setCode("no0001");
         user.setEmail("1576581989");
         user.setSex("femail");

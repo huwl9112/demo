@@ -69,10 +69,10 @@ public class MybatisPlusConfig {
      * @return
      */
     @Bean
-    public MybatisSqlSessionFactoryBean mybatisSqlSessionFactoryBean() {
+    public MybatisSqlSessionFactoryBean mybatisSqlSessionFactoryBean() throws Exception {
         MybatisSqlSessionFactoryBean mybatisPlus = new MybatisSqlSessionFactoryBean();
         mybatisPlus.setDataSource(dataSource);
-        mybatisPlus.setVfs(SpringBootVFS.class);
+        //mybatisPlus.setVfs(SpringBootVFS.class);
         if (StringUtils.hasText(this.properties.getConfigLocation())) {
             mybatisPlus.setConfigLocation(this.resourceLoader.getResource(this.properties.getConfigLocation()));
         }
@@ -80,9 +80,9 @@ public class MybatisPlusConfig {
         if (!ObjectUtils.isEmpty(this.interceptors)) {
             mybatisPlus.setPlugins(this.interceptors);
         }
-        MybatisConfiguration mc = new MybatisConfiguration();
+       /* MybatisConfiguration mc = new MybatisConfiguration();
         mc.setDefaultScriptingLanguage(MybatisXMLLanguageDriver.class);
-        mybatisPlus.setConfiguration(mc);
+        mybatisPlus.setConfiguration(mc);*/
         if (this.databaseIdProvider != null) {
             mybatisPlus.setDatabaseIdProvider(this.databaseIdProvider);
         }

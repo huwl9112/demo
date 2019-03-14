@@ -6,7 +6,6 @@ package com.hu.demo.interceptor;
  * @Description:
  */
 
-import com.alibaba.druid.pool.DruidDataSource;
 import com.hu.demo.datasource.DynamicDataSource;
 import com.hu.demo.datasource.SqlContextHolder;
 import org.apache.ibatis.executor.Executor;
