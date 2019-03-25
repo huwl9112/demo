@@ -62,6 +62,7 @@ public class WebSocketServer {
         if(!session.getId().equals("0"))
             webSocketSet.get("0").getBasicRemote().sendText("收到消息："+message);
         //群发消息
+
     }
 
     /**

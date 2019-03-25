@@ -52,11 +52,12 @@ public class UserController {
         Page<User> page = new Page<User>(pageNumer, pageSize);
         //Page<User> page1=userService.selectByPage(page,new EntityWrapper<User>());
         List<User> list= userService.selectByPage(page, params);
+        userService.selectPage(page);
         ReturnResult result = new ReturnResult();
         result.setCode("success");
         result.setData(list);
-        result.setPages(page.getPages());
-        result.setTotal(page.getTotal());
+        //result.setPages(page.getPages());
+        //result.setTotal(page.getTotal());
         result.setMsg("获取成功");
         return result;
     }

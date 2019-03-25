@@ -3,20 +3,23 @@ package com.hu.demo;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import org.apache.catalina.Context;
+import org.apache.catalina.connector.Connector;
+import org.apache.tomcat.util.descriptor.web.SecurityCollection;
+import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-//import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-//import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-
 @SpringBootApplication
 @EnableTransactionManagement
-//@EnableDiscoveryClient
+@EnableEurekaClient
 @EnableAsync
 public class DemoApplication {
 
@@ -34,6 +37,40 @@ public class DemoApplication {
         HttpMessageConverter<?> converter = fastConverter;
         return new HttpMessageConverters(converter);
     }
+
+   /* @Bean
+    public TomcatServletWebServerFactory tomcatServletWebServerFactory(Connector connector){
+        TomcatServletWebServerFactory tomcat=new TomcatServletWebServerFactory(){
+            @Override
+            protected void postProcessContext(Context context) {
+                SecurityConstraint securityConstraint=new SecurityConstraint();
+                securityConstraint.setUserConstraint("CONFIDENTIAL");
+                SecurityCollection collection=new SecurityCollection();
+                collection.addPattern("/*");
+                securityConstraint.addCollection(collection);
+                context.addConstraint(securityConstraint);
+            }
+        };
+        tomcat.addAdditionalTomcatConnectors(connector);
+        return tomcat;
+    }*/
+
+    /**
+     * @Description:配置请求自动转https
+     * @param []  
+     * @Return: org.apache.catalina.connector.Connector
+     * @Author: huwl 
+     * @Date: 2019/3/21 
+     */
+  /*  @Bean
+    public Connector httpConnector(){
+        Connector connector=new Connector("org.apache.coyote.http11.Http11NioProtocol");
+        connector.setScheme("http");
+        connector.setPort(8080);
+        connector.setSecure(false);
+        connector.setRedirectPort(443);
+        return connector;
+    }*/
 
     public static void main(String[] args) { SpringApplication.run(DemoApplication.class, args);
     }

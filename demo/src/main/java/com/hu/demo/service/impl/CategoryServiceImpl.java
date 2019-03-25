@@ -21,11 +21,4 @@ import java.util.Map;
  */
 @Service
 public class CategoryServiceImpl extends ServiceImpl<CategoryDao, Category> implements CategoryService {
-    @Autowired
-    private CategoryDao categoryDao;
-
-    @Override
-    public List<Category> selectByPage(Page<Category> page, Map<String, Object> params) {
-        return categoryDao.selectByPage(page,params);
-    }
 }

@@ -3,9 +3,11 @@ package com.hu.demo.controller;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 import com.hu.demo.entity.ReturnResult;
+import com.hu.demo.service.UserService;
 import com.hu.demo.utils.SpringContextUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.util.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +29,8 @@ import java.util.Map;
 @RestController
 @RequestMapping("common/{module}")
 public class CommonController {
+    @Autowired
+    private UserService userService;
     @RequestMapping("getDataList")
     public ReturnResult getDataList(@RequestParam Map<String, Object> params, @RequestParam(name = "pageNumber", defaultValue = "1") int pageNumber, @RequestParam(name = "pageSize", defaultValue = "10") int pageSize, @PathVariable String module) throws InvocationTargetException, IllegalAccessException {
         ReturnResult result = new ReturnResult();
@@ -44,8 +48,8 @@ public class CommonController {
         }
         result.setCode("success");
         result.setData(list);
-        result.setPages(page.getPages());
-        result.setTotal(page.getTotal());
+        //result.setPages(page.getPages());
+       // result.setTotal(page.getTotal());
         result.setMsg("获取成功");
         return result;
     }

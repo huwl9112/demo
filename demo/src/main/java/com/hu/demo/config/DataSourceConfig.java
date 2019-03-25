@@ -41,7 +41,7 @@ public class DataSourceConfig {
      * @return
      */
     @Bean(name="multipleDataSource")
-    //@Primary
+    @Primary
     public DataSource multipleDataSource (@Qualifier("master") DataSource master,
                                           @Qualifier("slave") DataSource slave ) {
         DynamicDataSource dynamicDataSource = new DynamicDataSource();

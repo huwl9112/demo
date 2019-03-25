@@ -78,7 +78,7 @@ spring:
       enabled: true
 
 #mybatis
-mybatis:
+mybatis-plus:
   mapper-locations: classpath:com/hu/demo/mapper/*.xml
   #实体扫描，多个package用逗号或者分号分隔
   type-aliases-package:  com.hu.demo.entity
@@ -98,17 +98,31 @@ mybatis:
     logic-delete-value: 0
     logic-not-delete-value: 1
     # SQL 解析缓存，开启后多租户 @SqlParser 注解生效
-    sql-parser-cache: true
+    #sql-parser-cache: true
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
-  configuration-properties:
-    dbType: mysql #设置全局属性用于控制数据库的类型
+
+  #configuration-properties:
+    #dbType: mysql #设置全局属性用于控制数据库的类型
 
 #防止get请求中文乱码
-server:
-  tomcat:
-    uri-encoding: UTF-8
+#server:
+  #port: 443
+  #tomcat:
+    #max-threads: 800
+    #accept-count: 30000
+    #min-spare-threads: 20
+    #max-connections: 30000
+    #uri-encoding: UTF-8
+  #ssl:
+#    证书路径
+   # key-store: classpath:tomcat.key
+    #key-store-type: JKS
+    #key-alias: tomcat
+#    配置密码，就是在生成证书的时候输入的密码
+    #key-store-password: 12051626
+    #enabled: true
 
 #登录限制
 login:
@@ -116,10 +130,10 @@ login:
   maxRetryCount: 3
 
 #eureka
-#eureka:
-  #client:
-    #serviceUrl:
-      #defaultZone: http://localhost:8761/eureka/
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
 
 #微信公众号设置
 wx:

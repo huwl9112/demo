@@ -11,6 +11,5 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * @author allnas
  * @since 2019-02-27
  */
-public interface CategoryDao extends BaseMapper<Category>,CommonDao<Category> {
-
+public interface CategoryDao extends BaseMapper<Category>{
 }

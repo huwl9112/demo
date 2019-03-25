@@ -13,6 +13,6 @@ import org.springframework.stereotype.Service;
  * @since 2019-02-27
  */
 @Service
-public interface CategoryService extends IService<Category>,CommonService<Category> {
+public interface CategoryService extends IService<Category> {
 
 }
