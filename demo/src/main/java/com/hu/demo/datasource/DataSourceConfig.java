@@ -1,4 +1,4 @@
-package com.hu.demo.config;
+package com.hu.demo.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.hu.demo.utils.SysConstant;

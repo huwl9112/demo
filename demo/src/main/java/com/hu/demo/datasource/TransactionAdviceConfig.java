@@ -1,4 +1,4 @@
-package com.hu.demo.config;
+package com.hu.demo.datasource;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.aop.Advisor;

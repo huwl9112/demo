@@ -47,7 +47,7 @@ public class SqlLogInterceptor implements Interceptor{
         //获取数据源
         DynamicDataSource db = (DynamicDataSource) configuration.getEnvironment().getDataSource();
         sql=sql.replaceAll("\'","").replace("\"", "");
-        if(!sql.startsWith("SELECT")){
+        if(!sql.startsWith("SELECT")&&!sql.startsWith("select")){
             SqlContextHolder.setSql(sql);
         }
         //执行结果
